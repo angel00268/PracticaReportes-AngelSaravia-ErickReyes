@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "ReporteSimple";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ReporteSimple</h2>
+<hr />
+
+<input type="button" id="btnIncrustar" name="btnIncrustar" value="Ver reporte" class="btn btn-success" />
+<input type="button" id="btnDescargar" name="btnIncrustar" value="Descargar reporte" class="btn btn-warning" />
+<hr />
+<iframe id="reportSimple" style="width:100%;height:600px;" frameborder="0" scrolling="yes">
+</iframe>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+
+            //Boton incrustar reporte
+            $("#btnIncrustar").click(function () {
+                $("#reportSimple").attr("src", "VerReporte").load();
+            });
+
+            //Boton descargar reporte
+            $("#btnDescargar").click(function () {
+                window.open("VerReporte");
+            });
+        });
+    </script>
+}

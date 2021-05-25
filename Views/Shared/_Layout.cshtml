@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            @Html.ActionLink("Practica reportes", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">@Html.ActionLink("Inicio", "Index", "Home" , new {@class = "nav-link active " })</li>
+                    <li class="nav-item">@Html.ActionLink("Acerca de", "About", "Home", new { @class = "nav-link active " })</li>
+                    <li class="nav-item">@Html.ActionLink("Contacto", "Contact", "Home", new { @class = "nav-link active " })</li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reportes
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li>@Html.ActionLink("Reporte Categorías", "Index", "Home", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte Clientes", "Index", "Home", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte Pedidos", "Index", "Home", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte Proveedores", "Index", "Home", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte Empleados", "Index", "Home", new { @class = "dropdown-item" })</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content mt-5">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p class="text-center">&copy; @DateTime.Now.Year<br />Erick Alcides Reyes Avila #261318<br />Angel Sebastian Saravia Serpas #261118</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/Scripts/jquery-3.4.1.js")
+    @Scripts.Render("~/Scripts/bootstrap.js")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
