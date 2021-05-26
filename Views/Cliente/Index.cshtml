@@ -30,12 +30,13 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
+<script>
         $(document).ready(function () {
 
             //Boton incrustar reporte
             $("#btnIncrustar").click(function () {
-                $("#report").attr("src", "VerReporte").load();
+                var url = "@Url.Action("ReporteClientes", "Cliente")";
+                $("#report").attr("src", url).load();
             });
 
             //Boton descargar reporte
@@ -43,6 +44,6 @@
                 window.open("VerReporte");
             });
         });
-    </script>
+</script>
 }
 

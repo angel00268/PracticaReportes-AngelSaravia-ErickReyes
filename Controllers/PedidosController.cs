@@ -8,26 +8,25 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace PracticaReportes_AngelSaravia_ErickReyes.Controllers
 {
-    public class EmpleadosController : Controller
+    public class PedidosController : Controller
     {
-        // GET: Empleados
+        // GET: Pedidos
         public ActionResult Index()
         {
             return View();
         }
 
-        /*Reporte Numero 5*/
-        public ActionResult VerReporte(string parametro)
+        public ActionResult ReporteFechas(string fechaIni, string fechaFin)
         {
             var reporte = new ReportClass();
-            reporte.FileName = Server.MapPath("/Rpts/EmpleadosReport.rpt");
-
-            //ESTABLECIENDO UN PARAMETRO AL REPORTE
-            reporte.SetParameterValue("paramFecha", DateTime.Parse(parametro));
-
-            //Conexion para el reporte
+            reporte.FileName = Server.MapPath("/Rpts/ReportePedidos.rpt");
+            //Estableciendo un parametro al reporte
+            reporte.SetParameterValue("fechaInicial", fechaIni);
+            reporte.SetParameterValue("fechaFinal", fechaFin);
+            //Establecer conexion para el reporte
             var coninfo = ReporteConexion.getConexion();
             TableLogOnInfo logoninfo = new TableLogOnInfo();
             Tables tables;

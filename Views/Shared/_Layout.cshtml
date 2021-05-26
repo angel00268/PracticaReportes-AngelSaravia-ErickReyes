@@ -26,11 +26,11 @@
                             Reportes
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li>@Html.ActionLink("Reporte 1 - Productos", "Index", "Productos", new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Reporte 2 - Clientes", "Index", "Cliente", new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Reporte 3 - Pedidos", "Index", "Home", new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Reporte 4 - Proveedores", "Index", "Home", new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Reporte 5 - Empleados", "Index", "Home", new { @class = "dropdown-item" })</li>
+                            <li class="nav-item"><a href="@Url.Action("Index","Productos")" class="dropdown-item">Reporte 1 - Productos</a></li>
+                            <li class="nav-item"><a href="@Url.Action("Index","Cliente")" class="dropdown-item">Reporte 2 - Clientes</a></li>
+                            <li class="nav-item"><a href="@Url.Action("Index","Pedidos")" class="dropdown-item">Reporte 3 - Pedidos</a></li>
+                            <li class="nav-item"><a href="@Url.Action("Index","Proveedores")" class="dropdown-item">Reporte 4 - Proveedores</a></li>
+                            <li class="nav-item"><a href="@Url.Action("Index","Empleados")" class="dropdown-item">Reporte 5 - Empleados</a></li>
                         </ul>
                     </li>
                 </ul>

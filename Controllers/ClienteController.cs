@@ -18,7 +18,7 @@ namespace PracticaReportes_AngelSaravia_ErickReyes.Controllers
             return View();
         }
 
-        public ActionResult VerReporte()
+        public ActionResult ReporteClientes()
         {
             var reporte = new ReportClass();
             reporte.FileName = Server.MapPath("/Rpts/ClientesReport.rpt");

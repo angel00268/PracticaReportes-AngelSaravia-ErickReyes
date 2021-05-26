@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="">
+        <h3 class="card-header">Reporte de proveedores según categoría de productos</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="form-group col-3 m-0">
+                <label class="form-label">Seleccione una categoria:</label>
+                <select class="form-control" id="idcategoria">
+                    <option value="0">Seleccione</option>
+                    @foreach (PracticaReportes_AngelSaravia_ErickReyes.Models.categorias cat in ViewBag.categorias)
+                    {
+                        <option value="@cat.idcategoria">@cat.nombrecategoria</option>
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="input-group mb-2">
+        <div class="mx-3">
+            <input type="button" id="btnIncrustar" value="Generar Reporte" class="btn btn-primary" />
+        </div>
+        <div class="">
+            <input type="button" id="btnDescargar" value="Descargar" class="btn btn-outline-primary" />
+        </div>
+    </div>
+</div>
+<iframe id="reportParam" style="width:100%; height:600px" frameborder="0" scrolling="yes">
+</iframe>
+<hr />
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            var cat = $("#idcategoria");
+            console.log(cat.val());
+            //Boton incrustar reporte
+            $("#btnIncrustar").click(function () {
+                if (cat.val() == "0") {
+                    Swal.fire(
+                        'Advertencia',
+                        'Debe seleccionar una categoria',
+                        'warning'
+                    )
+                } else {
+                    var item = cat.val();
+                    var url = "@Url.Action("ReporteProveedores","Proveedores")?idcat=" + item;
+                    $("#reportParam").attr("src", url).load();
+                }
+            });
+
+            //Boton descargar reporte
+            $("#btnDescargar").click(function () {
+                if (cat.val() == "0") {
+                    Swal.fire(
+                        'Advertencia',
+                        'Debe seleccionar una categoria',
+                        'warning'
+                    )
+                } else {
+                    var item = cat.val();
+                    var url = "@Url.Action("ReporteProveedores","Proveedores")?idcat=" + item;
+                    window.open(url);
+                }
+            });
+        });
+    </script>
+}

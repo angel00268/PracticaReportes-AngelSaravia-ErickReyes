@@ -4,5 +4,57 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Clientes</h1>
+<div class="card">
+    <div class="">
+        <h3 class="card-header">Reporte productos por categoria</h3>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">Fecha a utilizar como condicionante:</h6>
+        <input type="date" id="comboParametro" class="form-control" />
+    </div>
+    <div class="input-group mb-2">
+        <div class="mx-3">
+            <input type="button" id="btnIncrustar" value="Generar Reporte" class="btn btn-primary" />
+        </div>
+        <div class="">
+            <input type="button" id="btnDescargar" value="Descargar" class="btn btn-outline-primary" />
+        </div>
+    </div>
+</div>
+<iframe id="reportParam" style="width:100%; height:600px" frameborder="0" scrolling="yes">
+</iframe>
+<hr />
 
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            document.querySelector("#comboParametro").value = "2021-05-25";
+            var combo = $("#comboParametro");
+        //Button INSCRUSTAR
+        $("#btnIncrustar").on("click", function () {
+
+                var item = combo.val();
+                var url = "@Url.Action("VerReporte","Empleados")?parametro=" + item;
+                $("#reportParam").attr("src", url).load();
+        });
+        //Button Descargar
+         $("#btnDescargar").on("click", function () {
+            if (combo.val() == "") {
+                Swal.fire(
+                    'Advertencia',
+                    'Debe seleccionar una categoria',
+                    'warning'
+                )
+            }
+            else {
+                var item = combo.val();
+                var url = "@Url.Action("VerReporte","Empleados")?parametro=" + item;
+                window.open(url);
+            }
+        });
+
+    });
+    </script>
+}

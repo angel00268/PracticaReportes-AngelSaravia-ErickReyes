@@ -16,14 +16,14 @@ namespace PracticaReportes_AngelSaravia_ErickReyes.Rpts {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class EmpleadosReport : ReportClass {
         
-        public CrystalReport1() {
+        public EmpleadosReport() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "EmpleadosReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace PracticaReportes_AngelSaravia_ErickReyes.Rpts {
         
         public override string FullResourceName {
             get {
-                return "PracticaReportes_AngelSaravia_ErickReyes.Rpts.CrystalReport1.rpt";
+                return "PracticaReportes_AngelSaravia_ErickReyes.Rpts.EmpleadosReport.rpt";
             }
             set {
                 // Do nothing
@@ -87,12 +87,20 @@ namespace PracticaReportes_AngelSaravia_ErickReyes.Rpts {
                 return this.ReportDefinition.Sections[4];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_paramFecha {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedEmpleadosReport : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedEmpleadosReport() {
         }
         
         [Browsable(false)]
@@ -129,7 +137,7 @@ namespace PracticaReportes_AngelSaravia_ErickReyes.Rpts {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            EmpleadosReport rpt = new EmpleadosReport();
             rpt.Site = this.Site;
             return rpt;
         }
