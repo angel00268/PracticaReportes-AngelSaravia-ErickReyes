@@ -1,12 +1,13 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -25,11 +26,11 @@
                             Reportes
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li>@Html.ActionLink("Reporte Categorías", "Index", "Home", new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Reporte Clientes", "Index", "Home", new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Reporte Pedidos", "Index", "Home", new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Reporte Proveedores", "Index", "Home", new { @class = "dropdown-item" })</li>
-                            <li>@Html.ActionLink("Reporte Empleados", "Index", "Home", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte 1 - Productos", "Index", "Productos", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte 2 - Clientes", "Index", "Cliente", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte 3 - Pedidos", "Index", "Home", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte 4 - Proveedores", "Index", "Home", new { @class = "dropdown-item" })</li>
+                            <li>@Html.ActionLink("Reporte 5 - Empleados", "Index", "Home", new { @class = "dropdown-item" })</li>
                         </ul>
                     </li>
                 </ul>

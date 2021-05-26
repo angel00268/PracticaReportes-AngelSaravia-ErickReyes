@@ -10,38 +10,20 @@ using System.Web.Mvc;
 
 namespace PracticaReportes_AngelSaravia_ErickReyes.Controllers
 {
-    public class HomeController : Controller
+    public class ClienteController : Controller
     {
-    
+        // GET: Cliente
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult ReporteSimple ()
-        {
-            return View();
-        }
-        /*Reporte de Prueba*/
         public ActionResult VerReporte()
         {
             var reporte = new ReportClass();
-            reporte.FileName = Server.MapPath("/Rpts/CrystalReport1.rpt");
-            //Establecer conexion para el reporte
+            reporte.FileName = Server.MapPath("/Rpts/ClientesReport.rpt");
+
+            //Conexion para el reporte
             var coninfo = ReporteConexion.getConexion();
             TableLogOnInfo logoninfo = new TableLogOnInfo();
             Tables tables;
@@ -60,6 +42,5 @@ namespace PracticaReportes_AngelSaravia_ErickReyes.Controllers
 
             return new FileStreamResult(stream, "application/pdf");
         }
-
     }
 }

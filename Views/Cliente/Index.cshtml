@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card">
+    <div class="">
+        <h3 class="card-header">Compras</h3>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">Clientes Compradores de Lacteos</h6>
+    </div>
+    <div class="input-group mb-2">
+        <div class="mx-3">
+            <input type="button" id="btnIncrustar" value="Generar Reporte" class="btn btn-primary" />
+        </div>
+        <div class="">
+            <input type="button" id="btnDescargar" value="Descargar" class="btn btn-outline-primary" />
+        </div>
+    </div>
+</div>
+<iframe id="report" style="width:100%; height:600px" frameborder="0" scrolling="yes">
+</iframe>
+<hr />
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+
+            //Boton incrustar reporte
+            $("#btnIncrustar").click(function () {
+                $("#report").attr("src", "VerReporte").load();
+            });
+
+            //Boton descargar reporte
+            $("#btnDescargar").click(function () {
+                window.open("VerReporte");
+            });
+        });
+    </script>
+}
+

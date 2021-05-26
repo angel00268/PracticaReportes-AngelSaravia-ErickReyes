@@ -1,0 +1,93 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <div class="">
+        <h3 class="card-header">Reporte productos por categoria</h3>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title">Categoría:</h6>
+        <select id="comboParametro" class="form-control">
+            <option value="">
+                Seleccione...
+            </option>
+        </select>
+    </div>
+    <div class="input-group mb-2">
+        <div class="mx-3">
+            <input type="button" id="btnIncrustar" value="Generar Reporte" class="btn btn-primary" />
+        </div>
+        <div class="">
+            <input type="button" id="btnDescargar" value="Descargar" class="btn btn-outline-primary" />
+        </div>
+    </div>
+</div>
+<iframe id="reportParam" style="width:100%; height:600px" frameborder="0" scrolling="yes">
+</iframe>
+<hr />
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+         $(document).ready(function () {
+        cargarCombo();
+        var combo = $("#comboParametro");
+        //Button INSCRUSTAR
+        $("#btnIncrustar").on("click", function () {
+            if (combo.val() == "") {
+                Swal.fire(
+                    'Advertencia',
+                    'Debe seleccionar una categoria',
+                    'warning'
+                )
+            }
+            else {
+                var item = combo.val();
+                var url = "@Url.Action("VerReporte","Productos")?parametro=" + item;
+                $("#reportParam").attr("src", url).load();
+            }
+        });
+        //Button Descargar
+         $("#btnDescargar").on("click", function () {
+            if (combo.val() == "") {
+                Swal.fire(
+                    'Advertencia',
+                    'Debe seleccionar una categoria',
+                    'warning'
+                )
+            }
+            else {
+                var item = combo.val();
+                var url = "@Url.Action("VerReporte","Productos")?parametro=" + item;
+                window.open(url);
+            }
+        });
+
+    });
+    function cargarCombo() {
+        $.ajax({
+            url: "@Url.Action("GetCategorias","Productos")",
+            dataType: "JSON",
+            type: "GET"
+
+        }).done(function (respuesta) {
+            var data = JSON.parse(JSON.stringify(respuesta));
+            var opciones = " ";
+            for (i = 0; i < data.resultado.length; i++)
+            {
+                opciones += "<option value ='" + data.resultado[i] + "'>" + data.resultado[i] + "</option>";
+
+            }
+            $("#comboParametro").append(opciones);
+
+        }).fail(function (res) {
+            alert("Error al llenar el Combo");
+        });
+    }
+</script>
+}
+
